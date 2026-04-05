@@ -1,11 +1,20 @@
 import os
 from datetime import datetime
 
-curros = os.name
-
 def getdate(name):
    stripname = name.partition('.')[0]
    return datetime.strptime(stripname, "%m%d%Y_%H%M%S")
+
+def fixslash(tofix):
+  curros = os.name
+  if (tofix[-1]!= "/" and tofix[-1]!= "/"):
+    if (curros == "nt"):
+      tofix += "\\"
+    elif (curros == "posix"):
+      tofix += "/"
+    else:
+      tofix += "/"
+
 
 # Get Source Directory
 sourcedir = input("Enter the source path: ")
@@ -17,14 +26,8 @@ while True:
       tscale = input("That did not parse. Please Try again: ")    
       pass
 
-if (sourcedir[-1]!= "/" and sourcedir[-1]!= "/"):
-  if (curros == "nt"):
-    sourcedir += "\\"
-  elif (curros == "posix"):
-    sourcedir += "/"
-  else:
-     sourcedir += "/"
-                       
+sourcedir = fixslash(sourcedir)
+
 #Get Output Directory
 outputdir = input("Enter the output path: ")
 while True:
@@ -34,6 +37,8 @@ while True:
   except:
       tscale = input("That did not parse. Please Try again: ")    
       pass
+
+outputdir = fixslash(outputdir)
 
 #Define lists and stuff
 cachedict = dict()
