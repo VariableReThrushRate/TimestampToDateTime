@@ -1,5 +1,6 @@
 import os
 from datetime import datetime
+import shutil
 
 def getdate(name):
    stripname = name.partition('.')[0]
@@ -40,6 +41,7 @@ while True:
       pass
 
 outputdir = fixslash(outputdir)
+print(os.path.abspath(outputdir))
 
 #Define lists and stuff
 cachedict = dict()
@@ -61,12 +63,13 @@ fileslist.sort()
 index = 1
 for file in fileslist:
    #get the source file name
-   sourcefilename = os.path.abspath(sourcedir) + cachedict[file]
+   sourcefilename = sourcedir + cachedict[file]
    print(sourcefilename)
    #Ouput wound up being complicated.
    # Get the output dir, get the name from index, add the 0s for kdenlive, then get the file extension I forgot from the cachedict. There has to be a beter way to do this. I did not find it.
-   outputfilename = os.path.abspath(outputdir) + str(index).zfill(5) + cachedict[file][cachedict[file].rfind('.'):]
+   outputfilename = outputdir + str(index).zfill(5) + cachedict[file][cachedict[file].rfind('.'):]
    print(outputfilename)
+   shutil.copy2(sourcefilename, outputfilename)
    index += 1
 
 
