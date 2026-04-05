@@ -14,6 +14,7 @@ def fixslash(tofix):
       tofix += "/"
     else:
       tofix += "/"
+    return tofix
 
 
 # Get Source Directory
