@@ -31,15 +31,19 @@ fileslist = []
 
 # Begin Processing algo
 for name in sourcedirdata:
+#Get a conistent date object
+    consisdate = getdate(name)
 # Add these as date time objects 
-    fileslist.append(datetime)
+    fileslist.append(consisdate)
 # The dict associates the file names with the date time they represent, that's why it's a cache
-    cachedict[getdate(name)] = name
+    cachedict[consisdate] = name
 
-print(fileslist)
-print(cachedict)
 
-print(outputdir)
+
+#print(fileslist)
+#print(cachedict)
+
+#print(outputdir)
 
 # To be Done
 # Get input scheme from previous scale project for source and output diretories
