@@ -1,5 +1,5 @@
-import os as os
-
+import os
+import datetime
 
 # Get Source Directory
 sourcedir = input("Enter the source path: ")
@@ -11,6 +11,7 @@ while True:
       tscale = input("That did not parse. Please Try again: ")    
       pass
 
+#Get Output Directory
 outputdir = input("Enter the output path: ")
 while True:
   try:
@@ -20,9 +21,19 @@ while True:
       tscale = input("That did not parse. Please Try again: ")    
       pass
 
-for name in sourcedirdata:
-    print(name)
+#Define lists and stuff
+cachedict = dict()
+fileslist = []
 
+# Begin Processing algo
+for name in sourcedirdata:
+# Add these as date time objects 
+    fileslist.append(datetime)
+# The dict associates the file names with the date time they represent, that's why it's a cache
+    cachedict[datetime.strptime(name, "%m%d%Y_%H%M%S")] = name
+
+print(fileslist)
+print(cachedict)
 
 print(outputdir)
 
