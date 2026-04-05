@@ -5,7 +5,7 @@ import os as os
 sourcedir = input("Enter the source path: ")
 while True:
   try:
-      os.listdir(sourcedir)
+      sourcedirdata = os.listdir(sourcedir)
       break
   except:
       tscale = input("That did not parse. Please Try again: ")    
@@ -14,13 +14,16 @@ while True:
 outputdir = input("Enter the output path: ")
 while True:
   try:
-      os.listdir(sourcedir)
+      os.listdir(outputdir)
       break
   except:
       tscale = input("That did not parse. Please Try again: ")    
       pass
 
-print(sourcedir)
+for name in sourcedirdata:
+    print(name)
+
+
 print(outputdir)
 
 # To be Done
@@ -28,3 +31,6 @@ print(outputdir)
 # Make a list by making parsed datetime objects out of each file in the directory (do as same time as dict)
 # Make a dictionary that caches the file name associated with the datetime object, datetime as key because I'm insane
 # For loop that iterates over the list in order and outputs the files with the kdenlive format.
+# Kdenlive format is: 00001.jpg
+# Make sure to preserve file type when writing files.
+# date format: "%m%d%Y_%H%M%S"
