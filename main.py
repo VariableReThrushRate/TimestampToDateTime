@@ -1,7 +1,28 @@
 import os as os
 
-currentdir = os.listdir("./images/")
-print(currentdir)
+
+# Get Source Directory
+sourcedir = input("Enter the source path: ")
+while True:
+  try:
+      os.listdir(sourcedir)
+      break
+  except:
+      tscale = input("That did not parse. Please Try again: ")    
+      pass
+
+outputdir = input("Enter the output path: ")
+while True:
+  try:
+      os.listdir(sourcedir)
+      break
+  except:
+      tscale = input("That did not parse. Please Try again: ")    
+      pass
+
+print(sourcedir)
+print(outputdir)
+
 # To be Done
 # Get input scheme from previous scale project for source and output direetories
 # Make a list by making parsed datetime objects out of each file in the directory (do as same time as dict)
