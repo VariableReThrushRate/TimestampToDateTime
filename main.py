@@ -38,6 +38,15 @@ for name in sourcedirdata:
 # The dict associates the file names with the date time they represent, that's why it's a cache
     cachedict[consisdate] = name
 
+# The entire program centers on this one line. Sheesh.
+fileslist.sort()
+
+#Now we begin file copying.
+index = 1
+for file in fileslist:
+   #get the source file name
+   sourcefilename = sourcedir + cachedict[file]
+   print(sourcefilename)
 
 
 #print(fileslist)
