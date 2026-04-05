@@ -1,5 +1,9 @@
 import os
-import datetime
+from datetime import datetime
+
+def getdate(name):
+   stripname = name.partition('.')[0]
+   return datetime.strptime(stripname, "%m%d%Y_%H%M%S")
 
 # Get Source Directory
 sourcedir = input("Enter the source path: ")
@@ -30,7 +34,7 @@ for name in sourcedirdata:
 # Add these as date time objects 
     fileslist.append(datetime)
 # The dict associates the file names with the date time they represent, that's why it's a cache
-    cachedict[datetime.strptime(name, "%m%d%Y_%H%M%S")] = name
+    cachedict[getdate(name)] = name
 
 print(fileslist)
 print(cachedict)
