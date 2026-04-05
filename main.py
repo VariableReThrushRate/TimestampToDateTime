@@ -1,6 +1,8 @@
 import os
 from datetime import datetime
 
+curros = os.name
+
 def getdate(name):
    stripname = name.partition('.')[0]
    return datetime.strptime(stripname, "%m%d%Y_%H%M%S")
@@ -15,6 +17,14 @@ while True:
       tscale = input("That did not parse. Please Try again: ")    
       pass
 
+if (sourcedir[-1]!= "/" and sourcedir[-1]!= "/"):
+  if (curros == "nt"):
+    sourcedir += "\\"
+  elif (curros == "posix"):
+    sourcedir += "/"
+  else:
+     sourcedir += "/"
+                       
 #Get Output Directory
 outputdir = input("Enter the output path: ")
 while True:
@@ -45,8 +55,13 @@ fileslist.sort()
 index = 1
 for file in fileslist:
    #get the source file name
-   sourcefilename = sourcedir + cachedict[file]
+   sourcefilename = os.path.abspath(sourcedir) + cachedict[file]
    print(sourcefilename)
+   #Ouput wound up being complicated.
+   # Get the output dir, get the name from index, add the 0s for kdenlive, then get the file extension I forgot from the cachedict. There has to be a beter way to do this. I did not find it.
+   outputfilename = os.path.abspath(outputdir) + str(index).zfill(5) + cachedict[file][cachedict[file].rfind('.'):]
+   print(outputfilename)
+   index += 1
 
 
 #print(fileslist)
