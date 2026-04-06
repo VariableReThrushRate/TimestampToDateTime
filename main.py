@@ -2,12 +2,16 @@ import os
 from datetime import datetime
 import shutil
 
+#Function for returning a datetime object from my semi proprietary file name
 def getdate(name):
    stripname = name.partition('.')[0]
    return datetime.strptime(stripname, "%m%d%Y_%H%M%S")
 
+#Ensures that the slashes are correct at the ends of paths
 def fixslash(tofix):
+  #grab the current OS
   curros = os.name
+  # If tree that selects the correct / to use based on operating system
   if (tofix[-1]!= "/" and tofix[-1]!= "/"):
     if (curros == "nt"):
       tofix += "\\"
@@ -25,7 +29,7 @@ while True:
       sourcedirdata = os.listdir(sourcedir)
       break
   except:
-      tscale = input("That did not parse. Please Try again: ")    
+      sourcedir = input("That did not parse. Please Try again: ")    
       pass
 
 sourcedir = fixslash(sourcedir)
@@ -34,10 +38,11 @@ sourcedir = fixslash(sourcedir)
 outputdir = input("Enter the output path: ")
 while True:
   try:
+      # Yes I could use path exists but this specifically has an exception and the syntax was already an exception handler so I'm lazy
       os.listdir(outputdir)
       break
   except:
-      tscale = input("That did not parse. Please Try again: ")    
+      outputdir = input("That did not parse. Please Try again: ")    
       pass
 
 outputdir = fixslash(outputdir)
