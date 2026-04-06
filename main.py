@@ -46,9 +46,9 @@ while True:
       pass
 
 outputdir = fixslash(outputdir)
-print(os.path.abspath(outputdir))
+#print(os.path.abspath(outputdir))
 
-#Define lists and stuff
+#Define the cache dictionary to keep track of file names, and the date time list to be sorted.
 cachedict = dict()
 fileslist = []
 
@@ -84,10 +84,10 @@ for file in fileslist:
 #print(outputdir)
 
 # To be Done
-# Get input scheme from previous scale project for source and output diretories
-# Make a list by making parsed datetime objects out of each file in the directory (do as same time as dict)
-# Make a dictionary that caches the file name associated with the datetime object, datetime as key because I'm insane
-# For loop that iterates over the list in order and outputs the files with the kdenlive format.
+# Done -Get input scheme from previous scale project for source and output diretories
+# Done -Make a list by making parsed datetime objects out of each file in the directory (do as same time as dict)
+# Done -Make a dictionary that caches the file name associated with the datetime object, datetime as key because I'm insane
+# Done -For loop that iterates over the list in order and outputs the files with the kdenlive format.
 # Kdenlive format is: 00001.jpg
-# Make sure to preserve file type when writing files.
+# Done - Make sure to preserve file type when writing files.
 # date format: "%m%d%Y_%H%M%S"
